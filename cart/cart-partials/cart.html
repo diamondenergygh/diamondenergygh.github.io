@@ -1,0 +1,79 @@
+<!-- Page Title
+		============================================= -->
+		<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Cart</h1>
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Shop</a></li>
+					<li class="active">Cart</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+					<div class="table-responsive bottommargin">
+					<div class="row">
+					<div class="panel panel-default">
+  <div class="panel-body">
+  <div class="row">
+  <div class="col-lg-4 col-md-2"><center><b>Product Name</b></center></div>
+  <div class="col-lg-4 col-md-6"><center><b>Quantity</b></center></div>
+  <div class="col-lg-4 col-md-4 "><span class="pull-right"><b>Price</b></span></div>
+  </div>
+  </div>
+</div>
+{{#each this}}
+<div class="panel panel-default">
+   <div class="panel-body">
+  <div class="row">
+  <div class="col-lg-4 col-md-2"><h2>{{name}}<h2></div>
+  <div class="col-lg-4 col-md-6"><center>{{quantity}}</center></div>
+  <div class="col-lg-4 col-md-4 "><span class="pull-right">${{price}}</span></div>
+  </div>
+  </div>
+</div>
+{{/each}}
+					</div>
+					</div>
+
+					<div class="row clearfix">
+						<div class="col-md-6 pull-right clearfix">
+							<div class="table-responsive">
+								<h4>Cart Totals</h4>
+
+								<table class="table cart">
+									<tbody>
+										<tr class="cart_item">
+											<td class="cart-product-name">
+												<strong>Total</strong>
+											</td>
+
+											<td class="cart-product-name">
+												<span class="amount color lead" id="cart-total-cost"><strong>$106.94</strong></span>
+
+											</td>
+
+										</tr>
+									</tbody>
+
+								</table>
+								<a href="#/checkout" class="add-to-cart button nomargin pull-right ">Check Out</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->

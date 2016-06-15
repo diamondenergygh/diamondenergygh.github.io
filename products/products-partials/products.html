@@ -1,0 +1,65 @@
+<!-- Page Title
+		============================================= -->
+		<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Shop</h1>
+				
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li class="active">Shop</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap">
+
+				<div class="container clearfix">
+
+					<!-- Shop
+					============================================= -->
+					<div id="shop" class="clearfix" class="shop_container">
+
+					
+					 	<div id="product-card">
+					 	{{#each this}}
+					 	
+						<div class="product clearfix " >
+							<div class="product-image">
+								<a href="#/details/{{@index}}"><img src="http://library.devless.io/images/{{img}}.jpeg" ></a>
+								<a href="#/details/{{@index}}"><img src="http://library.devless.io/images/{{img}}.jpeg" ></a>
+								<div class="sale-flash">For Sale</div>
+								<div class="product-overlay">
+									<a href="#/details/{{@index}}" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+									<a href="#/details/{{@index}}" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span>Details</span></a>
+								</div>
+							</div>
+							<div class="product-desc">
+								<div class="product-title"><h3><a href="#/details/{{@index}}">{{name}}</a></h3></div>
+								<div class="product-price"><ins>${{price}}</ins></div>
+								<div class="product-rating">
+									{{trim description}}
+								</div>
+							</div>
+						</div>
+						
+						{{/each}}
+						</div>
+					
+						
+						
+						
+						
+
+					</div><!-- #shop end -->
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->
