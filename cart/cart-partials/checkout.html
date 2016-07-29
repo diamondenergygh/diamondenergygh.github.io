@@ -26,23 +26,30 @@
 						<div class="col-md-8">
 							<h3>Shipping Address</h3>
 
-							<form id="billing-form" name="billing-form" class="nobottommargin" action="#" method="post">
+							<form id="billing-form" name="billing-form" class="nobottommargin" action="#/orders" method="post">
+
+
+
+								<div class="col_full">
+									<label for="billing-form-address">Name:</label>
+									<input type="text"  id="name" value="" class="sm-form-control" />
+								</div>
 
 								<div class="col_full">
 									<label for="billing-form-address">Address:</label>
-									<input type="text" id="billing-form-address" name="billing-form-address" value="" class="sm-form-control" />
+									<input type="text"  id="address" value="" class="sm-form-control" />
 								</div>
 
-								<div class="col_full">
-									<label for="billing-form-zip">Country:</label>
-									<input type="text" id="billing-form-address2" name="billing-form-adress" value="" class="sm-form-control" />
-								</div>
 
 								<div class="col_full">
 									<label for="billing-form-city">City / Town</label>
-									<input type="text" id="billing-form-city" name="billing-form-city" value="" class="sm-form-control" />
+									<input type="text" id="city" value="" class="sm-form-control" />
 								</div>
 
+								<div class="col_full">
+									<label for="billing-form-zip">Phone Number:</label>
+									<input type="text" id="phone" value="" class="sm-form-control" />
+								</div>
 								
 
 							</form>
@@ -58,7 +65,7 @@
 
 
 							</div>
-							
+							<!-- <button class="button button-3d fright">Place Order</button> -->
 							<a onclick="Cart.placeOrder()" class="button button-3d fright">Place Order</a>
 						</div>
 					</div>

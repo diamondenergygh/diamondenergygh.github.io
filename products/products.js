@@ -65,12 +65,9 @@ app.get('#/', function() {
 
     Devless.queryData("products","inventory",function(response){
 
-
       partial = $( "<div></div>" ).load( "products/products-partials/products.html" ,function(){
-        data = response.payload;
+        data = response.payload.results;
         console.log(data);
-        delete data['related'];
-        delete data['count'];
 
         sessionStorage.setItem('products',JSON.stringify(data));
         var source = partial.html();
@@ -96,4 +93,18 @@ app.get('#/', function() {
   }
 
   });
+
+
+
+app.post('#/orders', function(data){
+  //data = this.params;
+  console.log("i am params",this.params);
+  Devless.addData("orders","orders", function(response){
+    console.log("orders table",response);
+    Cart.clearCart(); 
+      alert("order has been placed successfully");
+      window.location = "#/";
+              
+  }, data);
+})
 

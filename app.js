@@ -43,7 +43,7 @@ var Cart = {
 		//instantiate cart if empty
 		if(sessionStorage.getItem('cart') == null){
 
-			cart =[]
+			cart = [];
 			sessionStorage.setItem('cart',"[]");
 
 		}else{
@@ -135,15 +135,7 @@ var Cart = {
 			
 			totalCost += parseInt(cartobj[key].price); 
 		}
-		// console.log("total cost",totalCost);
-		// partial = $( "<div></div>" ).load( "orders/orders-partials/side-cart.html" ,function(partial){
-
-		// 		var template = Handlebars.compile(partial);
-		//   		var html = template(data);
-		//   		console.log(data);
-		//   		$('.product-log').html(html);
-		//   		$('#total-price').html("$"+totalCost);
-  // 		});
+		
 	}	
 
 	},
@@ -155,62 +147,41 @@ var Cart = {
 
 
 	placeOrder: function() {
+		var promises = [];
+		orders = {};
 
-			window.orders = {};
-	Devless.getProfile(function(profile){
-
-		window.orders['customer'] = profile.payload[0].username;
-		window.orders['city'] = "accra";
-		window.orders['address'] = "p.o.box 3179 kn accra";
+		orders['name'] = $('#name').val();
+		orders['address'] = $('#address').val();
+		orders['city'] = $('#city').val();
+		orders['phonenumber'] = $('#phone').val();
 
 		products = sessionStorage.getItem('cart');
 		products = JSON.parse(products);
-	
-		for(let key in products) {
-					for(let key2 in products[key])	{
-							if(key2 == "name"){
-							window.orders['product'] = products[key]['name'];
-						}
-						else if(key2 == "category" || key2 == "description"  || key2 == "productId") {
-
-						}
-						else{
-							
-							window.orders[key2] = products[key][key2];
-						}
-					
-							
-					}
-
-					
-					//add from here
-					Devless.addData("orders","orders",function(response){
-
-						console.log(response)
-						if(response.status_code == 609){
-
-							Cart.clearCart();	
-							alert("order has been placed successfully");
-							window.location = "#/";
-						}
-						
-
-
-					},window.orders);
-
-					
+		for (var i = 0; i < products.length; i++) {
+			orders['product'] = products[i].name;
+			orders['price'] = products[i].price;
+			orders['quantity'] = products[i].quantity;
+			promises.push(Devless.addData("orders", "orders", function(response){
+				console.log(response);
+				if(response.status_code === 609){
+					console.log("order placed successfully!");
+				}
+			}, orders));
 		}
-		
 
-	});
-
-
+		console.log(promises);
+		$.when.apply(promises).done(function(){
+			Cart.clearCart();
+			alert('Order has been placed successfully!');
+			window.location = "#/";
+			sessionStorage.removeItem('cart');
+		});
 	},
-
 
 }
 
 Cart.bucket();
+
 
 
 
