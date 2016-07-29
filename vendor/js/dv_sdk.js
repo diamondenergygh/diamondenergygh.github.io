@@ -7,9 +7,9 @@
 /* Initizialize library */
 
 //constants
-window.devless_token = "b518f7b5b227d84b80391583136dfb4e";
-window.devless_key = "localhost";
-window.devless_domain_name = "localhost";
+window.devless_token = "399800b2a3edc342a9136700f8c22d3d";
+window.devless_key = "TEMPORAL-APP-KEY";
+window.devless_domain_name = "instance5.devless.io";
 
 
 
