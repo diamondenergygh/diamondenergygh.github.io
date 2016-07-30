@@ -9,7 +9,7 @@
 //constants
 window.devless_token = "399800b2a3edc342a9136700f8c22d3d";
 window.devless_key = "TEMPORAL-APP-KEY";
-window.devless_domain_name = "instance5.devless.io";
+window.devless_domain_name = "instance2.devless.io";
 
 
 
