@@ -14,7 +14,7 @@ window.devless_domain_name = "instance5.devless.io";
 
 
 //http, data, chrome, chrome-extension, https, chrome-extension-resource.
-window.devless_request_protocol = "http";
+window.devless_request_protocol = "https";
 
 //change port number if required
 window.devless_port = 80;
