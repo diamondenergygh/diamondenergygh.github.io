@@ -17,7 +17,7 @@ window.devless_domain_name = "instance2.devless.io";
 window.devless_request_protocol = "https";
 
 //change port number if required
-window.devless_port = 80;
+window.devless_port = 443;
 
 
 
