@@ -182,8 +182,4 @@ var Cart = {
 
 Cart.bucket();
 
-
-
-
-
    
