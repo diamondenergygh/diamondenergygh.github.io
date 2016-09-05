@@ -12,7 +12,7 @@
           this.redirect('#/');
         });
 
-        
+
         this.post('#/pretend/post/url', function() {
           form_fields = this.params;
           this.log($.param(form_fields.toHash()));
@@ -39,7 +39,7 @@
 
 var Cart = {
 	addProduct: function(productId) {
-
+    alert('Product added to cart.');
 		//instantiate cart if empty
 		if(sessionStorage.getItem('cart') == null){
 
@@ -49,14 +49,14 @@ var Cart = {
 		}else{
 
 			cart = JSON.parse(sessionStorage.getItem('cart'));
-			
+
 		}
 
 
 		products = JSON.parse(sessionStorage.getItem('products'));
 		order = {}
 		var quantity = $(".qty").val();
-		
+
     	for (let key in products) {
           			if (!categories.hasOwnProperty(key)) { /**/ }
 
@@ -69,24 +69,24 @@ var Cart = {
 			            order.productId = products[key].id
 
 			            cart.push(order);
-						
-			            break;  
-         			 } 
-            
+
+			            break;
+         			 }
+
       			}
-    	
-		
+
+
 		cart = JSON.stringify(cart);
 		Cart.updateBucket(cart);
-		
-		
-		
-		
-		
-		//each product gets a slot
-	//content pair product includes product name , total price , product description, category user_token 
 
-	//submit to orders  
+
+
+
+
+		//each product gets a slot
+	//content pair product includes product name , total price , product description, category user_token
+
+	//submit to orders
 	},
 
 	removeProduct: function() {
@@ -104,20 +104,20 @@ var Cart = {
 			var num = +$(".qty").val() - 1;
 			$(".qty").val(num);
 		}
-		
-		
+
+
 
 	},
 
 	updateBucket: function(cart){
 		cartobj =  JSON.parse(cart);
-		
+
 		totalCost = 0;
 		$("#item-count").html(cartobj.length);
 
 		for (let key in cartobj) {
-			
-			totalCost += parseInt(cartobj[key].price); 
+
+			totalCost += parseInt(cartobj[key].price);
 		}
 
 		sessionStorage.setItem('cart',cart);
@@ -132,11 +132,11 @@ var Cart = {
 		data  = cartobj;
 		totalCost = 0;
 		for (let key in cartobj) {
-			
-			totalCost += parseInt(cartobj[key].price); 
+
+			totalCost += parseInt(cartobj[key].price);
 		}
-		
-	}	
+
+	}
 
 	},
 	clearCart: function() {
@@ -151,6 +151,7 @@ var Cart = {
 		orders = {};
 
 		orders['name'] = $('#name').val();
+    orders['email'] = $('#email').val();
 		orders['address'] = $('#address').val();
 		orders['city'] = $('#city').val();
 		orders['phonenumber'] = $('#phone').val();
@@ -181,5 +182,3 @@ var Cart = {
 }
 
 Cart.bucket();
-
-   
