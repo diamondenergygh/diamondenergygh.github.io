@@ -47,7 +47,7 @@ var Helper = {
 
             }
 
-            function r(partial, type="full"){
+            function r(partial, type){
 
             //mix data with view and render
                 var template = Handlebars.compile(partial);
