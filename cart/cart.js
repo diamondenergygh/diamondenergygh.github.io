@@ -6,7 +6,7 @@ app.get('#/cart', function() {
 
         price = 0;
 
-        for(let key in data )	{
+        for(var key in data )	{
         	price += data[key]['price'];
         	if (!data.hasOwnProperty(key)) { /**/ }
 

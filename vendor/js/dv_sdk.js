@@ -167,7 +167,7 @@ var Devless =
 
 	},
 
-	addData: function(serviceName, table, callback, data={}){
+	addData: function(serviceName, table, callback){
 
 
 			var payload = JSON.stringify({

@@ -30,7 +30,7 @@ app.get('#/details/:id', function() {
 
   productCategoryId = products[id]['category'];
 
-  for (let key in categories) {
+  for (var key in categories) {
           if (!categories.hasOwnProperty(key)) { /**/ }
 
           if(categories[key].id == productCategoryId){

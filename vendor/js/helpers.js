@@ -1,13 +1,13 @@
 var Helper = {
 
     view: {
-        render: function(service=null, view, data) {
+        render: function(service, view, data) {
 
             //check if stored view is available
             if(Helper.cache.read('views',view) == undefined) {
 
-                
-                //find path to partial 
+
+                //find path to partial
                 if(service == null)  {
 
                 pathToPartial = view+".html";
@@ -29,37 +29,37 @@ var Helper = {
 
                     }else{
 
-                       
+
                         r('<div class="error_notif" style="margin-top:20%;margin-left:20%">connection was lost ):</div>');
                     }
-                   
+
 
                 });
 
             }else {
 
-               //get cached view 
+               //get cached view
                partial = Helper.cache.read('views', view);
 
-               
+
 
                r(partial);
-                             
+
             }
-            
+
             function r(partial, type="full"){
 
             //mix data with view and render
                 var template = Handlebars.compile(partial);
                 var html = template(data);
-                 
+
                 (type == "partial")? $('#main').append(html): $('#main').html(html);
-                
+
                 return true;
             }
-           
+
         },
-        
+
 },
 
 request:  function(request) {
@@ -85,13 +85,13 @@ request:  function(request) {
         }
 
         parms[n] = nv.length === 2 ? v : null
-        
-        
+
+
     }
     return parms;
 },
 
-//cache 
+//cache
 cache: {
 
    write: function(segment=null, key=null, data) {
@@ -109,7 +109,7 @@ cache: {
         }else {
 
             dataStore[segment][key] = data;
-        } 
+        }
 
         dataStore = JSON.stringify(dataStore);
 
@@ -141,14 +141,14 @@ cache: {
    clear: function(segment=null, key=null) {
         if(JSON.parse(sessionStorage.getItem('dataStore')) == null){
 
-            sessionStorage.setItem('dataStore','{"model":{},"views":{}}'); 
+            sessionStorage.setItem('dataStore','{"model":{},"views":{}}');
 
         }
         if(segment == null) {
 
             data = {"model":{},"views":{}}
 
-            
+
 
 
         }else if(key == null) {
@@ -158,7 +158,7 @@ cache: {
 
             data[segment] = {};
 
-            
+
         }else{
 
             data = JSON.parse(sessionStorage.getItem('dataStore'));
@@ -171,32 +171,26 @@ cache: {
 
         return true;
 
-    
+
     },
 },
 
 init: function() {
 
         this.cache.clear("views");
-        
+
 },
 
 loading: function(loader='<div id="loader" style="margin-top:20%"><center><h1> processing... </center></div>') {
 
-         $('#main').html(loader);     
-    
+         $('#main').html(loader);
+
      },
 
-login: function(successfulFunction, failedFunction) { 
+login: function(successfulFunction, failedFunction) {
 
-},   
+},
 
 }
 
-Helper.init();  
-
-
-
-
-
-
+Helper.init();

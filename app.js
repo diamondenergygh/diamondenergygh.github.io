@@ -57,7 +57,7 @@ var Cart = {
 		order = {}
 		var quantity = $(".qty").val();
 
-    	for (let key in products) {
+    	for (var key in products) {
           			if (!categories.hasOwnProperty(key)) { /**/ }
 
 			          if(products[key].id == productId){
