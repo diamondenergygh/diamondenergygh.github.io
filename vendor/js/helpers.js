@@ -95,7 +95,8 @@ request:  function(request) {
 cache: {
 
    write: function(segment, key, data) {
-
+        segment = segment ? "" : null
+        key =  key ? "" : null
         dataStore = JSON.parse(sessionStorage.getItem('dataStore'));
 
         if(segment == null) {
@@ -121,6 +122,8 @@ cache: {
 
    read: function(segment, key) {
 
+     segment = segment ? "": null
+     key =  key ? "": null
         data = JSON.parse(sessionStorage.getItem('dataStore'));
 
         if(segment == null) {
@@ -139,6 +142,10 @@ cache: {
    },
 
    clear: function(segment, key) {
+
+     segment = segment ? "": null
+     key =  key ? "": null
+
         if(JSON.parse(sessionStorage.getItem('dataStore')) == null){
 
             sessionStorage.setItem('dataStore','{"model":{},"views":{}}');

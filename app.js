@@ -58,7 +58,7 @@ var Cart = {
 		var quantity = $(".qty").val();
 
     	for (var key in products) {
-          			if (!categories.hasOwnProperty(key)) { /**/ }
+          			// if (!categories.hasOwnProperty(key)) { /**/ }
 
 			          if(products[key].id == productId){
 			            order.name = products[key]['name'];
@@ -162,21 +162,47 @@ var Cart = {
 			orders['product'] = products[i].name;
 			orders['price'] = products[i].price;
 			orders['quantity'] = products[i].quantity;
-			promises.push(Devless.addData("orders", "orders", function(response){
-				console.log(response);
-				if(response.status_code === 609){
-					console.log("order placed successfully!");
-				}
-			}, orders));
+
+      // promises.push(
+      var data = JSON.stringify({
+  "resource": [
+    {
+      "name": "orders",
+      "field": [
+        orders
+      ]
+    }
+  ]
+});
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+    alert("Order has been placed successfully.")
+    Cart.clearCart();
+    window.location = "#/";
+    sessionStorage.removeItem('cart');
+  }
+});
+
+xhr.open("POST", "https://instance2.devless.io:443/api/v1/service/orders/db");
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("devless-token", "399800b2a3edc342a9136700f8c22d3d");
+xhr.setRequestHeader("devless-key", "TEMPORAL-APP-KEY");
+
+xhr.send(data);
+// )
 		}
 
-		console.log(promises);
-		$.when.apply(promises).done(function(){
-			Cart.clearCart();
-			alert('Order has been placed successfully!');
-			window.location = "#/";
-			sessionStorage.removeItem('cart');
-		});
+		// console.log("promises", promises);
+		// $.when.apply(promises).done(function(){
+		// 	Cart.clearCart();
+		// 	alert('Order has been placed successfully!');
+		// 	window.location = "#/";
+		// 	sessionStorage.removeItem('cart');
+		// });
 	},
 
 }

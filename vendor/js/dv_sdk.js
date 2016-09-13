@@ -167,9 +167,9 @@ var Devless =
 			callback(sessionStorage.getItem('devless_user_token'));
 	},
 
-	requestProcessor: function(data, sub_url, method, callback, true ){
+	requestProcessor: function(data, sub_url, method, callback, parse){
 
-
+		parse = parse ? " ": true;
 		var xhr = new XMLHttpRequest();
 
 
