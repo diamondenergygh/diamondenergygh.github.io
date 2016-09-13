@@ -115,7 +115,7 @@ var Cart = {
 		totalCost = 0;
 		$("#item-count").html(cartobj.length);
 
-		for (let key in cartobj) {
+		for (var key in cartobj) {
 
 			totalCost += parseInt(cartobj[key].price);
 		}
@@ -131,7 +131,7 @@ var Cart = {
 		$("#item-count").html(cartobj.length);
 		data  = cartobj;
 		totalCost = 0;
-		for (let key in cartobj) {
+		for (var key in cartobj) {
 
 			totalCost += parseInt(cartobj[key].price);
 		}

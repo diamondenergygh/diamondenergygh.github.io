@@ -88,26 +88,6 @@ var Devless =
 			});
 	},
 
-	logOut: function (callback){
-
-		user_data = {
-			  "resource": [
-			    {
-			      "auth_type": "logout"
-			    }
-			  ]
-			}
-
-			var data = JSON.stringify(user_data);
-			sub_url = "/api/v1/service/auth/script";
-			Devless.requestProcessor(data, sub_url,  "POST", function(response){
-
-				callback(response);
-				sessionStorage.removeItem('devless_user_token'+window.devless_domain_name+window.devless_token);
-
-			});
-	},
-
 	getProfile: function (callback){
 		user_data = {
 			  "resource": [
@@ -125,29 +105,6 @@ var Devless =
 
 				callback(response);
 			});
-	},
-
-	updateProfile: function (data, callback){
-
-			var data = JSON.stringify({
-			  "resource": [
-			     data
-			  ]
-			});
-
-			sub_url = "/api/v1/service/auth/script";
-			Devless.requestProcessor(data, sub_url,  "PATCH", function(response){
-
-
-				if(response.status_code == 1000 ){
-
-
-					sessionStorage.setItem('devless_user_token'+window.devless_domain_name+window.devless_token, response.payload[0]);
-
-				}
-
-				callback(response);
-			})
 	},
 
 	//add options to params object
@@ -192,66 +149,6 @@ var Devless =
 
 	},
 
-	updateData: function(serviceName, table, where_key, where_value, callback,  data={}){
-
-		var payload = JSON.stringify({
-	   	"resource":[
-	      {
-	         "name":table,
-	         "params":[
-	            {
-	               "where": where_key+","+where_value,
-	               "data":[
-	                   data
-	               ]
-
-	            }
-	         ]
-	      }
-
-	    ]
-		});
-
-			sub_url = "/api/v1/service/"+serviceName+"/db";
-			Devless.requestProcessor(payload, sub_url,  "PATCH", function(response){
-
-
-				callback(response);
-			});
-
-	},
-
-	//operation types : delete drop truncate
-	delete: function(serviceName, table, where_key, where_value, action, callback){
-
-			var payloadObj =
-				{
-				   	"resource":[
-				      {
-				         "name":table,
-				         "params":[
-				            {
-			                   "where": where_key+",=,"+where_value
-					         }
-				         ]
-				      }
-
-				    ]
-				};
-
-			payloadObj.resource[0].params[0][action] = "true";
-
-			payloadStr = JSON.stringify(payloadObj);
-
-			sub_url = "/api/v1/service/"+serviceName+"/db";
-
-			Devless.requestProcessor(payloadStr, sub_url,  "DELETE", function(response){
-
-			callback(response);
-
-			});
-
-	},
 
 	runScript: function(serviceName, method, data, callback){
 
